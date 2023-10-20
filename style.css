@@ -1,4 +1,4 @@
-# Style.css by groznyogor <3
+# Style.css By groznyogor
 
 body {
     font-family: Arial, sans-serif;
@@ -13,20 +13,45 @@ body {
     padding: 1rem;
 }
 
-.gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 2rem;
+.navigation ul {
+    list-style-type: none;
+    padding: 0;
 }
 
-.image {
-    margin: 1rem;
+.navigation li {
+    display: inline;
+    margin-left: 1rem;
 }
 
-.image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.navigation a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.server {
+    text-align: center;
+    padding: 2rem;
+}
+
+.server h2 {
+    margin-bottom: 1rem;
+}
+
+.server p {
+    max-width: 600px;
+    margin: 0 auto 1rem;
+}
+
+.server a {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.server a:hover {
+    background-color: #555;
 }
