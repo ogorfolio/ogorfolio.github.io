@@ -1,0 +1,107 @@
+<!-- Site by profkrzys (discord)-->
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <title>OGORFOLIO</title>
+        <meta charset="UTF-8">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="ogrfolio">
+        <meta name="twitter:description" content="Portfolio dla groznyogor!">
+        <meta name="twitter:image" content="https://example.com/your-thumbnail-image.jpg">
+        <meta name="twitter:url" content="https://ogorfolio.github.io">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+
+        
+    </head>
+    <body>
+        <header>
+            <h1>OgorFolio</h1>
+            <a href="https://discord.com/users/1161547899067441282">Kontakt</a>
+        </header><br>
+        <section id="info">
+            <h2>groznyogor</h2>
+            <h3>Tworzę serwery discord na zamówienie. Dlaczego warto coś zamówić? Ponieważ jest <span id="text-animation-1"></span>! Poniżej przedstawiam moje portfolio.</h3>
+        </section><br><br>
+        <section id="portfolio">
+            <h2>Przykłady moich prac:</h2>
+            <details>
+                <summary>
+                    <h3>XOMC (Kliknij, aby zobaczyć!)</h3>
+                </summary>
+                <img src="xomc.png" alt="xomc">
+            </details>
+        </section><br><br>
+        <section id="legit">
+            <h2>Czy możesz mi zaufać?</h2>
+            <div id="legit-list">
+                
+            </div>
+        </section>
+        <footer>
+            <h3>Made for groznyogor by profkrzys</h3>
+        </footer>
+        <script>
+            const textElement1 = document.getElementById("text-animation-1");
+            const words1 = ["tanio", "dobrze", "szybko"];
+            let wordIndex1 = 0;
+            let charIndex1 = 0;
+    
+            function typeText1() {
+                if (wordIndex1 < words1.length) {
+                    if (charIndex1 < words1[wordIndex1].length) {
+                        textElement1.textContent += words1[wordIndex1].charAt(charIndex1);
+                        charIndex1++;
+                        setTimeout(typeText1, 100);
+                    } else {
+                        setTimeout(eraseText1, 1000);
+                    }
+                }
+            }
+    
+            function eraseText1() {
+                if (charIndex1 > 0) {
+                    textElement1.textContent = words1[wordIndex1].substring(0, charIndex1 - 1);
+                    charIndex1--;
+                    setTimeout(eraseText1, 50);
+                } else {
+                    wordIndex1 = (wordIndex1 + 1) % words1.length;
+                    setTimeout(typeText1, 500);
+                }
+            }
+    
+            typeText1();
+
+    
+            function loadLegit() {
+                // Wczytaj dane "Czy możesz mi zaufać?" z pliku JSON
+                fetch('zaufanie.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const legitList = document.getElementById('legit-list');
+    
+                        // Iteruj przez dane z pliku JSON i generuj elementy "Czy możesz mi zaufać?"
+                        data.forEach(item => {
+                            const legitItem = document.createElement('div');
+                            legitItem.innerHTML = `
+                                <details>
+                                    <summary>
+                                        <h3>${item.username} (Kliknij, aby zobaczyć!)</h3>
+                                    </summary>
+                                    <img src="${item.image}" alt="${item.username}">
+                                </details>
+                            `;
+    
+                            legitList.appendChild(legitItem);
+                        });
+                    })
+                    .catch(error => console.error('Błąd wczytywania danych "Czy możesz mi zaufać?": ', error));
+            }
+    
+            loadLegit();
+        </script>
+    </body>
+</html>
+<!-- Site by profkrzys (discord)-->
