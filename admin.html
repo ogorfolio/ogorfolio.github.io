@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Panel Administratora</title>
+</head>
+<body>
+  <h1>Panel Administratora</h1>
+  <form id="adminForm">
+    <label for="username">Nazwa użytkownika:</label>
+    <input type="text" id="username" required><br><br>
+    <label for="file">Wybierz plik:</label>
+    <input type="file" id="file" accept=".png, .jpg, .jpeg" required><br><br>
+    <button type="button" id="addButton">Dodaj</button>
+  </form>
+
+  <script>
+    document.getElementById('addButton').addEventListener('click', function() {
+      const username = document.getElementById('username').value;
+      const fileInput = document.getElementById('file');
+
+      if (!username || !fileInput.files.length) {
+        alert("Wprowadź nazwę użytkownika i wybierz plik.");
+        return;
+      }
+
+      const file = fileInput.files[0];
+      const formData = new FormData();
+      formData.append('username', username);
+      formData.append('file', file);
+
+      // Wyślij żądanie POST na serwer
+      fetch('/upload', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert('Plik został dodany.');
+        document.getElementById('adminForm').reset();
+      })
+      .catch(error => {
+        console.error('Wystąpił błąd:', error);
+      });
+    });
+  </script>
+</body>
+</html>
