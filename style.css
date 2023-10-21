@@ -1,4 +1,4 @@
-# Style.css By groznyogor
+# Style.css by groznyogor
 
 body {
     font-family: Arial, sans-serif;
@@ -54,4 +54,27 @@ body {
 
 .server a:hover {
     background-color: #555;
+}
+
+/* Dodaj poniższy kod na końcu pliku style.css */
+
+.legit {
+    text-align: center;
+    padding: 2rem;
+}
+
+.legit h2 {
+    margin-bottom: 1rem;
+}
+
+.legit .image {
+    margin: 1rem;
+    display: inline-block;
+}
+
+.legit .image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
